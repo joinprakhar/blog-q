@@ -1,5 +1,25 @@
 {
+  "name": "easyshop",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node api/index.js",
+    "server": "nodemon api/index.js",
+    "client": "npm start --prefix client",
+    "dev": "concurrently \"npm run server\" \"npm run client\""
+  },
+  "author": "prakhar pandey",
+  "license": "ISC",
   "dependencies": {
-    "react-router-dom": "^6.13.0"
+    "bcrypt": "^5.1.0",
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
+    "mongoose": "^7.3.0"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.0",
+    "dotenv": "^16.1.4",
+    "nodemon": "^2.0.22"
   }
 }
