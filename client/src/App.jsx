@@ -28,7 +28,11 @@ const App = () => {
               ReImagining Trust in Hi-Tech, Platforms & Information Services
               firms
             </h2>
-            <p>
+            <p className="info">
+              <span className="author">Prakhar Pandey </span>
+              <time>2023-01-06 16:45</time>
+            </p>
+            <p className="summary">
               Technology firms usually offer great solutions or platforms for
               your core business. However, they face challenges when it comes to
               scaling, supporting and achieving end-to-end effective business
