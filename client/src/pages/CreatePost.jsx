@@ -4,19 +4,18 @@ import "react-quill/dist/quill.snow.css";
 import Editor from '../components/Editor';
 import { Navigate } from "react-router-dom";
 
+
 export default function CreatePost() {
   const [title, setTitle] = useState("");
   const [summary, setSummary] = useState("");
   const [content, setContent] = useState("");
   const [files, setFiles] = useState("");
-  const [image, setImage] = useState("");
   const [redirect, setRedirect] = useState(false);
   async function createNewPost(ev) {
     const data = new FormData();
     data.set("title", title);
     data.set("summary", summary);
     data.set("content", content);
-    data.set("image", image);
     data.set("file", files[0]);
     ev.preventDefault();
     const response = await fetch("http://localhost:4000/post", {
@@ -46,16 +45,9 @@ export default function CreatePost() {
         value={summary}
         onChange={(ev) => setSummary(ev.target.value)}
       />
-      <input
-        type="text"
-        placeholder={"image url"}
-        value={image}
-        onChange={(ev) => setImage(ev.target.value)}
-      />
       <input type="file" onChange={(ev) => setFiles(ev.target.files)} />
       <Editor value={content} onChange={setContent} />
       <button style={{ marginTop: "5px" }}>Create post</button>
     </form>
   );
 }
-

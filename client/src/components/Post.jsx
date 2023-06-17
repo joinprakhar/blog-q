@@ -1,27 +1,27 @@
-import React from 'react'
+import React from 'react';
+import {formatISO9075} from "date-fns";
+import {Link} from 'react-router-dom';
 
-const Post = () => {
+const Post = ({_id, title, summary, content, cover, createdAt, author }) => {
+  
+  console.log(cover)
+  
   return (
     <div className="post">
       <div className="image">
-        <img
-          src="https://hexaware.com/wp-content/uploads/2019/10/Hi-Tech-Platforms-Information-Services.jpg"
-          alt="img"
-        />
+        <Link to={`/post/${_id}`}>
+          <img src={"http://localhost:4000/" + cover} alt="img" />
+        </Link>
       </div>
       <div className="texts">
-        <h2>
-          ReImagining Trust in Hi-Tech, Platforms & Information Services firms
-        </h2>
+        <Link to={`/post/${_id}`}>
+          <h2>{title}</h2>
+        </Link>
         <p className="info">
-          <span className="author">Prakhar Pandey </span>
-          <time>2023-01-06 16:45</time>
+          <span className="author">{author.username} </span>
+          <time>{formatISO9075(new Date(createdAt))}</time>
         </p>
-        <p className="summary">
-          Technology firms usually offer great solutions or platforms for your
-          core business. However, they face challenges when it comes to scaling,
-          supporting and achieving end-to-end effective business solutions.
-        </p>
+        <p className="summary">{summary}</p>
       </div>
     </div>
   );
