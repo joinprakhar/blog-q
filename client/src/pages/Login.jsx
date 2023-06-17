@@ -1,12 +1,13 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import {Navigate} from 'react-router-dom'
+import { UserContext } from "../context/userContext";
 
 const Login = () => {
 
 const [username, setUsername] = useState("");
 const [password, setPassword] = useState("");
 const [redirect, setRedirect] = useState(false);
-//const { setUserInfo } = useContext(UserContext);
+const { setUserInfo } = useContext(UserContext);
 
 async function login(ev) {
   ev.preventDefault();
@@ -18,7 +19,7 @@ async function login(ev) {
   });
   if (response.ok) {
     response.json().then((userInfo) => {
-      //setUserInfo(userInfo);
+      setUserInfo(userInfo);
       setRedirect(true);
     });
   } else {
