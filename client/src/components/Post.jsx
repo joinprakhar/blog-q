@@ -2,15 +2,12 @@ import React from 'react';
 import {formatISO9075} from "date-fns";
 import {Link} from 'react-router-dom';
 
-const Post = ({_id, title, summary, content, cover, createdAt, author }) => {
-  
-  console.log(cover)
-  
+const Post = ({_id, title, summary, content, cover, createdAt, author, image }) => {
   return (
-    <div className="post">
+    <div className="post" key={_id}>
       <div className="image">
         <Link to={`/post/${_id}`}>
-          <img src={"http://localhost:4000/" + cover} alt="img" />
+          <img src={image} alt="img" />
         </Link>
       </div>
       <div className="texts">

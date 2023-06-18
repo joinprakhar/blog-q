@@ -10,11 +10,10 @@ const IndexPage = () => {
       })
     })
   }, []);
-
   return (
     <>
       {posts.length > 0 && posts.map(post =>(
-        <Post {...post}/>
+        <Post {...post} />
       ))}
     </>
   );

@@ -81,15 +81,68 @@ app.post('/post', uploadMiddleware.single('file'), async (req, res) => {
     const { token } = req.cookies;
     jwt.verify(token, secret, {}, async (err, info) => {
         if (err) throw err;
-        const { title, summary, content } = req.body;
+        const { title, summary, content, image } = req.body;
         const postDoc = await Post.create({
             title,
             summary,
             content,
+            image,
             cover: newPath,
             author: info.id,
         });
         res.json(postDoc);
+    });
+
+});
+
+app.put('/post/', uploadMiddleware.single('file'), async (req, res) => {
+    
+    let newPath = null;
+    if (req.file) {
+        const { originalname, path } = req.file;
+        const parts = originalname.split('.');
+        const ext = parts[parts.length - 1];
+        newPath = path + '.' + ext;
+        fs.renameSync(path, newPath);
+    }
+
+     const { token } = req.cookies;
+     jwt.verify(token, secret, {}, async (err, info) =>{ 
+         if (err) throw err;
+         const { id, title, summary, content , image } = req.body;
+         const postDoc = await Post.findById(id);
+         const isAuthor = JSON.stringify(postDoc.author) === JSON.stringify(info.id);
+         if (!isAuthor) {
+            return res.status(400).json('you are not the author');
+        }
+         await Post.findByIdAndUpdate(postDoc._id, {
+            title,
+            summary,
+            content,
+            image,
+            cover: newPath ? newPath : postDoc.cover,
+         });
+
+         res.json(postDoc);
+    });
+
+});
+
+app.delete('/post', uploadMiddleware.single('file'), async (req, res) => {
+
+    const { token } = req.cookies;
+    jwt.verify(token, secret, {}, async (err, info) => {
+        if (err) throw err;
+        const { id } = req.body;
+        const postId = await Post.findById(id);
+        const isAuthor = JSON.stringify(postId.author) == JSON.stringify(info.id);
+        if (!isAuthor) {
+            return res.status(400).json('you are not the author');
+        }
+        await Post.findByIdAndRemove(postId._id)
+
+        res.json(postId);
+        console.log(postId._id);
     });
 
 });
@@ -103,7 +156,10 @@ app.get('/post', async (req, res) => {
     );
 });
 
-
-
+app.get('/post/:id', async (req, res) => {
+    const { id } = req.params;
+    const postDoc = await Post.findById(id).populate('author', ['username']);
+    res.json(postDoc);
+})
 
 app.listen(4000);
