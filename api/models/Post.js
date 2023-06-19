@@ -5,6 +5,7 @@ const PostSchema = new Schema({
     title: String,
     summary: String,
     content: String,
+    image: String,
     filepath: String,
     cover: String,
     author: {
