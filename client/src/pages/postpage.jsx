@@ -1,25 +1,15 @@
 import { useContext, useEffect, useState } from "react";
-<<<<<<< HEAD
 import { Navigate, useParams } from "react-router-dom";
-=======
-import { useParams } from "react-router-dom";
->>>>>>> 064a111f532124cbeb8252c6e69ddd166f89e25c
 import { formatISO9075 } from "date-fns";
 import { UserContext } from "../context/userContext";
 import { Link } from "react-router-dom";
 
 export default function PostPage() {
-<<<<<<< HEAD
   const { id } = useParams();
   const [postInfo, setPostInfo] = useState(null);
   const { userInfo } = useContext(UserContext);
   const [redirect, setRedirect] = useState(false);
 
-=======
-  const [postInfo, setPostInfo] = useState(null);
-  const { userInfo } = useContext(UserContext);
-  const { id } = useParams();
->>>>>>> 064a111f532124cbeb8252c6e69ddd166f89e25c
   useEffect(() => {
     fetch(`http://localhost:4000/post/${id}`).then((response) => {
       response.json().then((postInfo) => {
@@ -29,7 +19,6 @@ export default function PostPage() {
   }, []);
 
   if (!postInfo) return "";
-<<<<<<< HEAD
 
   async function deletePost(ev) {
     ev.preventDefault();
@@ -48,9 +37,7 @@ export default function PostPage() {
   if (redirect) {
     return <Navigate to={"/"} />;
   }
-=======
->>>>>>> 064a111f532124cbeb8252c6e69ddd166f89e25c
-
+const img = "https://t4.ftcdn.net/jpg/04/73/25/49/360_F_473254957_bxG9yf4ly7OBO5I0O5KABlN930GwaMQz.jpg"
   return (
     <div className="post-page">
       <h1>{postInfo.title}</h1>
@@ -75,7 +62,6 @@ export default function PostPage() {
             </svg>
             Edit this post
           </Link>
-<<<<<<< HEAD
           <Link className="edit-bbtn" onClick={deletePost}>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -96,13 +82,15 @@ export default function PostPage() {
         </div>
       )}
       <div className="image">
-        <img src={postInfo.image} alt="" />
-=======
-        </div>
-      )}
-      <div className="image">
-        <img src={`http://localhost:4000/${postInfo.cover}`} alt="" />
->>>>>>> 064a111f532124cbeb8252c6e69ddd166f89e25c
+        {!postInfo.image ? (
+          <img
+            src="https://t4.ftcdn.net/jpg/04/73/25/49/360_F_473254957_bxG9yf4ly7OBO5I0O5KABlN930GwaMQz.jpg"
+            alt=""
+          />
+        ) : (
+          <img src={postInfo.image} alt="" />
+        )}
+        
       </div>
       <div
         className="content"

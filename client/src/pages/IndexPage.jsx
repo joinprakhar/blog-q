@@ -10,20 +10,13 @@ const IndexPage = () => {
       })
     })
   }, []);
-<<<<<<< HEAD
   return (
     <>
       {posts.length > 0 && posts.map(post =>(
-        <Post {...post} />
-=======
+        <Post {...post} />))}
+
+  </>
   
-  return (
-    <>
-      {posts.length > 0 && posts.map(post =>(
-        <Post post={posts} />
->>>>>>> 064a111f532124cbeb8252c6e69ddd166f89e25c
-      ))}
-    </>
   );
 };
 

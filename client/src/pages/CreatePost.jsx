@@ -14,26 +14,34 @@ export default function CreatePost() {
   const [redirect, setRedirect] = useState(false);
   const [value, setValue] = useState(false);
   async function createNewPost(ev) {
-    const data = new FormData();
-    data.set("title", title);
-    data.set("summary", summary);
-    data.set("content", content);
-    data.set("image", image);
-    data.set("file", files[0]);
-    ev.preventDefault();
-    const response = await fetch("http://localhost:4000/post", {
-      method: "POST",
-      body: data,
-      credentials: "include",
-    });
-    if (response.ok) {
-      setRedirect(true);
+
+    if(!files){
+      alert("Please select a file");
+    }else {
+      const data = new FormData();
+      data.set("title", title);
+      data.set("summary", summary);
+      data.set("content", content);
+      data.set("image", image);
+      data.set("file", files[0]);
+      ev.preventDefault();
+      const response = await fetch("http://localhost:4000/post", {
+        method: "POST",
+        body: data,
+        credentials: "include",
+      });
+      if (response.ok) {
+        setRedirect(true);
+      }
     }
+    
   }
 
   if (redirect) {
     return <Navigate to={"/"} />;
   }
+
+ 
   return (
     <form onSubmit={createNewPost}>
       <input

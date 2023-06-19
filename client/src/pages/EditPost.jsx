@@ -8,10 +8,8 @@ export default function EditPost() {
   const [summary, setSummary] = useState("");
   const [content, setContent] = useState("");
   const [files, setFiles] = useState("");
-<<<<<<< HEAD
   const [image, setImage] = useState("");
-=======
->>>>>>> 064a111f532124cbeb8252c6e69ddd166f89e25c
+
   const [redirect, setRedirect] = useState(false);
 
   useEffect(() => {
@@ -20,10 +18,9 @@ export default function EditPost() {
         setTitle(postInfo.title);
         setContent(postInfo.content);
         setSummary(postInfo.summary);
-<<<<<<< HEAD
+
         setImage(postInfo.image);
-=======
->>>>>>> 064a111f532124cbeb8252c6e69ddd166f89e25c
+
       });
     });
   }, []);
@@ -34,10 +31,9 @@ export default function EditPost() {
     data.set("title", title);
     data.set("summary", summary);
     data.set("content", content);
-<<<<<<< HEAD
+
     data.set("image", image);
-=======
->>>>>>> 064a111f532124cbeb8252c6e69ddd166f89e25c
+
     data.set("id", id);
     if (files?.[0]) {
       data.set("file", files?.[0]);
@@ -48,11 +44,9 @@ export default function EditPost() {
      credentials: "include",
    });
     if (response.ok) {
-<<<<<<< HEAD
+
       setRedirect(true);
-=======
-      //setRedirect(true);
->>>>>>> 064a111f532124cbeb8252c6e69ddd166f89e25c
+
     }
   }
 
@@ -74,15 +68,14 @@ export default function EditPost() {
         value={summary}
         onChange={(ev) => setSummary(ev.target.value)}
       />
-<<<<<<< HEAD
+
       <input
         type="text"
         placeholder={"Image URL"}
         value={image}
         onChange={(ev) => setImage(ev.target.value)}
       />
-=======
->>>>>>> 064a111f532124cbeb8252c6e69ddd166f89e25c
+
       <input type="file" onChange={(ev) => setFiles(ev.target.files)} />
       <Editor onChange={setContent} value={content} />
       <button style={{ marginTop: "5px" }}>Update post</button>
