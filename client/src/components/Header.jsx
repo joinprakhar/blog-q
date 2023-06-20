@@ -6,15 +6,18 @@ const Header = () => {
 
   const { userInfo, setUserInfo } = useContext(UserContext);
 
+  
   useEffect(() => {
-    fetch("http://localhost:4000/profile", {
-      credentials: "include",
-    }).then((response) => {
-      response.json().then((userInfo) => {
-        setUserInfo(userInfo);
-      })
-    })
+      fetch("http://localhost:4000/profile", {
+        credentials: "include",
+      }).then((response) => {
+        response.json().then((userInfo) => {
+          setUserInfo(userInfo);
+        });
+      });
   }, []);
+
+  //console.log(userInfo.info.name);
 
   function logout() {
     fetch("http://localhost:4000/logout", {
@@ -24,7 +27,7 @@ const Header = () => {
     setUserInfo(null);
   }
 
-  const username = userInfo?.username;
+  const username = userInfo?.info?.name;
 
   return (
     <div>
@@ -32,11 +35,17 @@ const Header = () => {
         <Link to="/" className="logo">
           MyBlog
         </Link>
+
         <nav>
           {username && (
             <>
               <Link to="/create">Create new post</Link>
-              <a href="/" onClick={logout}>Logout ({username})</a>
+              <a href="/profile" >
+                {username}
+              </a>
+              <a href="/" onClick={logout}>
+                Logout
+              </a>
             </>
           )}
           {!username && (

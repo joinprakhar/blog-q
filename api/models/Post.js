@@ -8,6 +8,7 @@ const PostSchema = new Schema({
     image: String,
     filepath: String,
     cover: String,
+    category: String,
     author: {
         type: Schema.Types.ObjectId, ref: 'User'
     },
