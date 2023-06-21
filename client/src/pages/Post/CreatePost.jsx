@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
-//import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
-import Editor from '../components/Editor';
+import Editor from './Editor';
 import { Navigate } from "react-router-dom";
 
 
@@ -11,10 +10,10 @@ export default function CreatePost() {
   const [content, setContent] = useState("");
   const [files, setFiles] = useState("");
   const [image, setImage] = useState("");
+  const [type, setType] = useState("");
   const [redirect, setRedirect] = useState(false);
-  const [value, setValue] = useState(false);
+  
   async function createNewPost(ev) {
-
     if(!files){
       alert("Please select a file");
     }else {
@@ -23,6 +22,7 @@ export default function CreatePost() {
       data.set("summary", summary);
       data.set("content", content);
       data.set("image", image);
+      data.set("category", type);
       data.set("file", files[0]);
       ev.preventDefault();
       const response = await fetch("http://localhost:4000/post", {
@@ -35,7 +35,7 @@ export default function CreatePost() {
       }
     }
     
-  }
+   }
 
   if (redirect) {
     return <Navigate to={"/"} />;
@@ -62,9 +62,15 @@ export default function CreatePost() {
         value={image}
         onChange={(ev) => setImage(ev.target.value)}
       />
+      <input
+        type="text"
+        placeholder={"Category"}
+        value={type}
+        onChange={(ev) => setType(ev.target.value)}
+      />
       <input type="file" onChange={(ev) => setFiles(ev.target.files)} />
       <Editor value={content} onChange={setContent} />
-      <button disabled={value} style={{ marginTop: "5px" }}>
+      <button style={{ marginTop: "5px" }}>
         Create post
       </button>
     </form>

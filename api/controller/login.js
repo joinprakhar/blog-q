@@ -1,10 +1,8 @@
 const express = require('express');
-const app = express();
 const User = require('../models/user');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const cookieParser = require('cookie-parser')
-const fs = require('fs');
 const secret = "76b7u76u7u6bfxnghnchg7yjyujjjy";
 
 const login = async (req, res) => {
@@ -13,13 +11,14 @@ const login = async (req, res) => {
     const userDocs = userDoc[0]
     const passOk = bcrypt.compareSync(password, userDocs.password);
     if (passOk) {
+        const Name = userDocs.firstName + " " + userDocs.lastName
         //logedIn
-        jwt.sign({ email, id: userDocs._id, info: userDocs }, secret, {}, (err, token) => {
+        jwt.sign({ email, id: userDocs._id, Name}, secret, {}, (err, token) => {
             if (err) throw err;
             res.cookie('token', token).json({
                 id: userDocs._id,
                 email,
-                info: userDocs
+                Name
             });
         });
         //res.json()

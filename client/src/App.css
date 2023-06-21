@@ -1,17 +1,19 @@
-*{
+* {
   box-sizing: border-box;
 }
 
-body{
-  color : #222
+body {
+  color: #222
 }
 
-a{
+a {
   cursor: pointer;
 }
-img{
+
+img {
   max-width: 100%;
 }
+
 main {
   padding: 10px;
   max-width: 900px;
@@ -25,12 +27,12 @@ header {
   margin-top: 20px;
 }
 
-header a{
+header a {
   text-decoration: none;
   color: inherit;
 }
 
-header a.logo{
+header a.logo {
   font-weight: bold;
   font-size: 1.5rem;
 }
@@ -48,12 +50,13 @@ div.post {
 }
 
 @media screen and (min-width: 700px) {
-  div.post{
-    grid-template-columns: 0.9fr 1.1fr;;
+  div.post {
+    grid-template-columns: 0.9fr 1.1fr;
+    ;
   }
 }
 
-div.post div.texts h2{
+div.post div.texts h2 {
   margin: 0;
   font-size: 1.2rem;
 }
@@ -63,30 +66,31 @@ div.post div.texts a {
   color: inherit;
 }
 
-div.post p.info{
+div.post p.info {
   margin: 0;
-  color:#aaa; 
+  color: #aaa;
   font-size: 0.7rem;
   font-weight: bold;
   display: flex;
   gap: 10px;
 }
 
-div.post p.info a.author{
+div.post p.info a.author {
   color: #333;
 }
 
-div.post p.summary{
+div.post p.summary {
   margin: 10px 0;
   line-height: 1.4rem;
 }
 
-form.login, form.register{
-  max-width: 400px ;
+form.login,
+form.register {
+  max-width: 400px;
   margin: 0 auto;
 }
 
-input{
+input {
   display: block;
   margin-bottom: 5px;
   width: 100%;
@@ -96,7 +100,7 @@ input{
   background-color: #fff;
 }
 
-button{
+button {
   width: 100%;
   display: block;
   background-color: #555;
@@ -107,23 +111,24 @@ button{
   padding: 7px 0;
 }
 
-form.login h1, form.register h1{
+form.login h1,
+form.register h1 {
   text-align: center;
 }
 
-div.post-page div.image{
+div.post-page div.image {
   height: 200px;
   display: flex;
   overflow: hidden;
 }
 
-div.post-page div.image img{
+div.post-page div.image img {
   object-fit: cover;
   object-position: center center;
   width: 100%;
 }
 
-div.post-page a{
+div.post-page a {
   color: #333;
   text-decoration: none;
 }
@@ -147,14 +152,16 @@ div.post-page div.author {
   font-size: 0.7rem;
   font-weight: bold;
 }
+
 div.post-page div.content p {
   line-height: 1.6rem;
 }
 
-div.edit-row{
+div.edit-row {
   text-align: center;
   margin-bottom: 20px;
 }
+
 div.post-page a.edit-btn {
   background-color: #333;
   display: inline-flex;
@@ -166,14 +173,12 @@ div.post-page a.edit-btn {
   border-radius: 5px;
 }
 
-a svg{
+a svg {
   height: 20px;
 }
 
-.indexPage{
+.indexPage {
   margin: auto;
 }
 
-.indexPageComp{
-  
-}
+.indexPageComp {}

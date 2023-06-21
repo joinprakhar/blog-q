@@ -1,6 +1,6 @@
 import React, { useContext, useState } from "react";
 import {Navigate} from 'react-router-dom'
-import { UserContext } from "../context/userContext";
+import { UserContext } from "../../context/userContext";
 import styles from "./RegisterPage.module.css";
 
 const Login = () => {
@@ -19,7 +19,7 @@ async function login(ev) {
     credentials: "include",
   });
   if (response.ok) {
-    response.json().then((userInfo) => {
+    await response.json().then((userInfo) => {
       setUserInfo(userInfo);
       setRedirect(true);
     });
@@ -27,7 +27,6 @@ async function login(ev) {
     alert("wrong credentials");
   }
 }
-
 
 if (redirect) {
   return <Navigate to={"/"} />;
@@ -73,19 +72,3 @@ if (redirect) {
 };
 
 export default Login;
-{/* <form action="" className="login" onSubmit={login}>
-      <h1>Login</h1>
-      <input
-        type="text"
-        placeholder="username"
-        value={username}
-        onChange={(e) => setUsername(e.target.value)}
-      />
-      <input
-        type="password"
-        placeholder="password"
-        value={password}
-        onChange={(e) => setPassword(e.target.value)}
-      />
-      <button>Login</button>
-    </form> */}

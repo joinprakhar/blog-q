@@ -17,18 +17,21 @@ const create = async (req, res) => {
     const { token } = req.cookies;
     jwt.verify(token, secret, {}, async (err, info) => {
         if (err) throw err;
-        const { title, summary, content, image } = req.body;
+        console.log(info)
+        const { title, summary, content, image, category } = req.body;
         const postDoc = await Post.create({
             title,
             summary,
             content,
             image,
+            category,
             cover: newPath,
-            cover: originalname,
             filepath: path,
-            author: info.id,
+            author: info.id
         });
         res.json(postDoc);
+    // op = {title, summary, content, image, category, newPath}
+    //     console.log(newPath);
     });
 
 }

@@ -8,7 +8,10 @@ export default function Post({ post }) {
     <div className={styles.post}>
       {post.length > 0 &&
         post.map((post) => {
-          const { _id, title, summary, createdAt, author, image } = post;
+          const { _id, title, summary, createdAt, author, image, category } =
+            post;
+          console.log(post)
+       //   console.log(post.cover)
           return (
             <article className={styles.card} key={_id}>
               <div className={styles.card__inner}>
@@ -34,7 +37,7 @@ export default function Post({ post }) {
                   </div>
                   <div className={styles.tags}>
                     <div className="info">
-                      <a className={styles.author}>{author.username}</a>
+                      <a className={styles.author}>{category}</a>
                     </div>
                     <div>
                       <time className={styles.date}>
@@ -46,14 +49,12 @@ export default function Post({ post }) {
                 <div
                   className={`${styles.card__body} ${styles.card__body__back}`}
                 >
-                  
-                    <div className={styles.texts}>
-                      <p className={styles.summary}>{summary}</p>
-                      <Link to={`/post/${_id}`}>
+                  <div className={styles.texts}>
+                    <p className={styles.summary}>{summary}</p>
+                    <Link to={`/post/${_id}`}>
                       <p className={styles.author}>Read More...</p>
-                      </Link>
-                    </div>
-                  
+                    </Link>
+                  </div>
                 </div>
               </div>
             </article>
@@ -62,27 +63,3 @@ export default function Post({ post }) {
     </div>
   );
 }
-//<img src={"http://localhost:4000/" + cover} alt="" />
-
-/* <div className="image">
-        <Link to={`/post/${_id}`}>
-          {!image ? (
-            <img
-              src="https://t4.ftcdn.net/jpg/04/73/25/49/360_F_473254957_bxG9yf4ly7OBO5I0O5KABlN930GwaMQz.jpg"
-              alt=""
-            />
-          ) : (
-            <img src={image} alt="" />
-          )}
-        </Link>
-      </div>
-      <div className="texts">
-        <Link to={`/post/${_id}`}>
-          <h2 class="card__title">{title}</h2>
-        </Link>
-        <p className="info">
-          <a className="author">{author.username}</a>
-          <time>{formatISO9075(new Date(createdAt))}</time>
-        </p>
-        <p className="summary">{summary}</p>
-      </div> */

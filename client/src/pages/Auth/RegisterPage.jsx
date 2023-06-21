@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import styles from "./RegisterPage.module.css"
 
 const RegisterPage = () => {
-  const [fName, setFname] = useState("");
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [password, setPassword] = useState("");
@@ -12,15 +11,15 @@ const RegisterPage = () => {
 
   async function register(e) {
     e.preventDefault();
-    setFname(firstName +" "+lastName);
+    
     if (password && password === checkPassword) {
-      console.log(fName)
+      console.log(firstName + " " + lastName)
     } else {
       console.log("error");
     }
     const response = await fetch("http://localhost:4000/register", {
       method: "POST",
-      body: JSON.stringify({ fName,email, password }),
+      body: JSON.stringify({ firstName, lastName, email, password }),
       headers: { "Content-Type": "application/json" },
     });
 

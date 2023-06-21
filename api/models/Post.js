@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 const { Schema, model } = mongoose
-//required: true, min: 4,
+
 const PostSchema = new Schema({
     title: String,
     summary: String,
@@ -11,6 +11,9 @@ const PostSchema = new Schema({
     category: String,
     author: {
         type: Schema.Types.ObjectId, ref: 'User'
+    },
+    comments: {
+        type: Schema.Types.ObjectId, ref: 'Comment'
     },
 }, {
     timestamps: true

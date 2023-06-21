@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import Post from "../components/Post";
+import Post from "./Post";
 
 const IndexPage = () => {
   const [posts, setPost] = useState([]);
@@ -10,6 +10,8 @@ const IndexPage = () => {
       });
     });
   }, []);
+
+  
   return (
     <div className=".indexPage">
       <Post post={posts} />
@@ -18,4 +20,4 @@ const IndexPage = () => {
 };
 
 export default IndexPage;
-//{posts.length > 0 && posts.map((post) => )}
+//{posts.length > 0 && posts.map((post) => )} <Post post={posts} />
