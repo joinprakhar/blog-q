@@ -12,9 +12,7 @@ const register = async (req, res) => {
             password: bcrypt.hashSync(password, salt),
         })
         res.json(userDoc)
-        console.log(userDoc)
     } catch (err) {
-        console.log(err)
         res.status(400).json(err);
     }
     

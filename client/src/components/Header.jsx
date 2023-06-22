@@ -5,18 +5,21 @@ import { UserContext } from "../context/userContext.jsx";
 const Header = () => {
   const { userInfo, setUserInfo } = useContext(UserContext);
 
-  useEffect(() => {
-    if (userInfo) {
-    } else {
-      fetch("http://localhost:4000/profile", {
-        credentials: "include",
-      }).then((response) => {
-        response.json().then((userInfo) => {
-          setUserInfo(userInfo);
-        });
+  function profile() {
+    fetch("http://localhost:4000/profile", {
+      credentials: "include",
+    }).then((response) => {
+      response.json().then((userInfo) => {
+        setUserInfo(userInfo);
       });
-    }
+    });
+  }
+
+  useEffect(() => {
+    profile();
   }, []);
+
+
 
   function logout() {
     setUserInfo(null);
@@ -26,22 +29,17 @@ const Header = () => {
     });
   }
 
-  console.log(userInfo?.id)
-
   return (
     <div>
       <header>
         <Link to="/" className="logo">
-          MyBlog
+          The Post
         </Link>
-
         <nav>
           {userInfo && (
             <>
               <Link to="/create">Create new post</Link>
-              <Link to={`/profile/${userInfo?.id}`}>
-                {userInfo?.Name}
-                </Link>
+              <Link to={`/profile/${userInfo?.id}`}>{userInfo?.Name}</Link>
               <a href="/" onClick={logout}>
                 Logout
               </a>

@@ -16,6 +16,7 @@ const ProfilePage = () => {
       });
     });
   }, []);
+const count = postInfo?.length
 
   
 
@@ -38,13 +39,13 @@ const ProfilePage = () => {
           </p>
           <p>Web Developer</p>
           <p>{info?.email}</p>
-          <p>Total Post : 1c </p>
+          <p>Total Post : {count} </p>
         </div>
       </div>
       {postInfo.length > 0 &&
         postInfo.map((post) => {
           return (
-            <div>
+            <div key={post?._id}>
               <UserPost post={post} id={userInfo?._id} />
             </div>
           );

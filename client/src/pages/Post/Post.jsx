@@ -8,9 +8,9 @@ export default function Post({ post }) {
     <div className={styles.post}>
       {post.length > 0 &&
         post.map((post) => {
-          const { _id, title, summary, createdAt, author, image, category } =
+          const { _id, title, summary, createdAt, image, category } =
             post;
-          console.log(post)
+
        //   console.log(post.cover)
           return (
             <article className={styles.card} key={_id}>

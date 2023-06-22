@@ -1,11 +1,10 @@
-
+import { Link } from "react-router-dom";
 import styles from "./profilePage.module.css";
 import { formatISO9075 } from "date-fns";
 //import { Navigate } from "react-router-dom";
 
-const UserPost = ({post , id}) => {
-  const { _id, title, summary, createdAt, image } = post;
-  console.log(post)
+const UserPost = ({ post}) => {
+  const { _id, title, summary, createdAt, image, category } = post;
 
   return (
     <div className={styles.containerPost}>
@@ -18,11 +17,12 @@ const UserPost = ({post , id}) => {
             <div className={styles.clicks}>
               {" "}
               Created On -{formatISO9075(new Date(createdAt))}
-              <div className={styles.cli}>SPORTS</div>
+              <div className={styles.cli}>{category}</div>
             </div>
             <div className={styles.click}>
-              <div className={styles.cl}>Review</div>
-              
+              <Link className="edit-btn" to={`/post/${_id}`}>
+                <div className={styles.cl}>VIEW</div>
+              </Link>
             </div>
           </div>
           <h3>{title}</h3>

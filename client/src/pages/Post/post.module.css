@@ -11,7 +11,7 @@
 
 .card {
     width: 200px;
-    height: 300px;
+    height: 230px;
     perspective: 800px;
     box-sizing: border-box;
 }
@@ -61,7 +61,7 @@
 
     .card {
         width: 200px;
-        height: 300px;
+        height: 200px;
         margin: 0 auto;
     }
 
@@ -88,7 +88,7 @@
 }
 
 .texts{
-    height: 140px;
+    height: 65px;
     margin: 5px;
 }
 
@@ -130,7 +130,7 @@
 }
 
 .summary{
-    height: 270px;
+    height: 200px;
     overflow: hidden;
 }
 
