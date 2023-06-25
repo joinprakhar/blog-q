@@ -10,7 +10,7 @@ const uploadMiddleware = multer({ dest: 'api/uploads' });
 dotenv.config();
 app.use(cors({
     credentials: true,
-    origin: 'https://thepost.vercel.app/'
+    origin: 'https://thepost.vercel.app'
 }))
 app.use(express.json())
 app.use(cookieParser());
