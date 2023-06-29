@@ -20,7 +20,7 @@ const [redirect, setRedirect] = useState(false);
     } else {
       console.log("error");
     }
-    const response = await fetch("https://blog-q-api.vercel.app/register", {
+    const response = await fetch("http://localhost:4000/register", {
       method: "POST",
       body: JSON.stringify({ firstName, lastName, email, password }),
       headers: { "Content-Type": "application/json" },

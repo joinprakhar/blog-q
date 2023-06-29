@@ -4,7 +4,7 @@ import Post from "./Post";
 const IndexPage = () => {
   const [posts, setPost] = useState([]);
   useEffect(() => {
-    fetch("https://blog-q-api.vercel.app/post").then((response) => {
+    fetch("http://localhost:4000/post").then((response) => {
       response.json().then((posts) => {
         setPost(posts);
       });

@@ -11,7 +11,7 @@ export default function PostPage() {
   const [redirect, setRedirect] = useState(false);
 
   useEffect(() => {
-    fetch(`https://blog-q-api.vercel.app/post/${id}`).then((response) => {
+    fetch(`http://localhost:4000/post/${id}`).then((response) => {
       response.json().then((postInfo) => {
         setPostInfo(postInfo);
       });

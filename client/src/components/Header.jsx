@@ -23,7 +23,7 @@ const Header = () => {
 
   function logout() {
     setUserInfo(null);
-    fetch("https://blog-q-api.vercel.app/logout", {
+    fetch("http://localhost:4000//logout", {
       credentials: "include",
       method: "POST",
     });
